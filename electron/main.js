@@ -5,6 +5,50 @@ const { spawn } = require('child_process');
 const http = require('http');
 const treeKill = require('tree-kill');
 
+// 日志文件路径
+function getLogFilePath() {
+  const logDir = path.join(app.getPath('appData'), 'KPSR', 'logs');
+  // 确保日志目录存在
+  if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
+  }
+  // 生成日志文件名（包含日期时间）
+  const now = new Date();
+  const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}`;
+  return path.join(logDir, `kpsr-${timestamp}.log`);
+}
+
+// 初始化日志文件
+const logFilePath = getLogFilePath();
+console.log(`日志文件路径: ${logFilePath}`);
+
+// 重定向控制台输出到日志文件
+const originalConsoleLog = console.log;
+const originalConsoleError = console.error;
+
+function logToFile(message) {
+  const timestamp = new Date().toISOString();
+  const logMessage = `[${timestamp}] ${message}\n`;
+  try {
+    fs.appendFileSync(logFilePath, logMessage);
+  } catch (err) {
+    // 如果写入日志文件失败，不影响应用运行
+    originalConsoleError('写入日志文件失败:', err);
+  }
+}
+
+console.log = function(...args) {
+  const message = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' ');
+  originalConsoleLog(...args);
+  logToFile(`[INFO] ${message}`);
+};
+
+console.error = function(...args) {
+  const message = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' ');
+  originalConsoleError(...args);
+  logToFile(`[ERROR] ${message}`);
+};
+
 // 保持对窗口和托盘的引用
 let mainWindow = null;
 let tray = null;
