@@ -414,15 +414,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // 处理按钮点击
         function handleShortcutClick(button) {
-            Logger.log('快捷键按钮点击:', button);
-            Logger.log('按钮类型:', button.type);
-            Logger.log('按钮数据:', {
-                shortcut: button.shortcut,
-                multiActions: button.multiActions,
-                toggleActions: button.toggleActions,
-                autoCloseDuration: button.autoCloseDuration
-            });
-            
             // 验证按钮数据
             const validation = validateButtonData(button);
             if (!validation.valid) {
@@ -445,10 +436,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                         Logger.error('单次点击按钮缺少快捷键:', button);
                         showToast('按钮配置错误：缺少快捷键');
                         return;
-                    }
-                    // 确保没有其他类型的字段（数据清理后的保障）
-                    if (button.toggleActions || button.multiActions) {
-                        Logger.warn('单次点击按钮包含其他类型字段，已忽略:', button);
                     }
                     // 执行快捷键，但不更新UI状态（single类型不保持激活状态）
                     const singleButton = document.getElementById(`shortcut-${button.id}`);
@@ -481,10 +468,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                         showToast('按钮配置错误：缺少动作配置');
                         return;
                     }
-                    // 确保没有其他类型的字段
-                    if (button.shortcut || button.toggleActions) {
-                        Logger.warn('多次点击按钮包含其他类型字段，已忽略:', button);
-                    }
                     // 添加点击动画（和Single一样，但更快）
                     const multiButton = document.getElementById(`shortcut-${button.id}`);
                     if (multiButton) {
@@ -510,10 +493,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                         Logger.error('激活模式按钮缺少动作配置:', button);
                         showToast('按钮配置错误：缺少激活/取消激活配置');
                         return;
-                    }
-                    // 确保没有其他类型的字段
-                    if (button.shortcut || button.multiActions) {
-                        Logger.warn('激活模式按钮包含其他类型字段，已忽略:', button);
                     }
                     handleToggleClick(button);
                     break;
@@ -613,25 +592,19 @@ document.addEventListener('DOMContentLoaded', async function() {
             if (isActive) {
                 // 激活状态：启动自动关闭定时器
                 const autoCloseDuration = button.autoCloseDuration;
-                console.log(`[Toggle点击] 按钮 ${button.id} 激活状态检查 - autoCloseDuration值: ${autoCloseDuration}, 类型: ${typeof autoCloseDuration}`);
                 
                 // 检查autoCloseDuration是否存在且大于0
                 // 注意：autoCloseDuration可能是数字、字符串或null/undefined
                 const duration = parseInt(autoCloseDuration, 10);
-                console.log(`[Toggle点击] 解析后的duration: ${duration}, isNaN: ${isNaN(duration)}, >0: ${duration > 0}`);
                 
                 if (!isNaN(duration) && duration > 0) {
-                    console.log(`✅ [Toggle点击] 为按钮 ${button.id} 启动自动关闭定时器，时长：${duration}秒`);
                     startAutoCloseTimer(button.id, duration, button);
-                } else {
-                    console.warn(`❌ [Toggle点击] 按钮 ${button.id} 未设置自动关闭时长或时长无效 - 原始值: ${autoCloseDuration}, 解析后: ${duration}`);
                 }
                 
                 // 启动剪贴板监听（用于检测操作完成）
                 startClipboardMonitor(button.id, button);
             } else {
                 // 取消激活状态：清除自动关闭定时器和剪贴板监听
-                console.log(`[Toggle点击] 为按钮 ${button.id} 清除自动关闭定时器`);
                 clearAutoCloseTimer(button.id);
                 stopClipboardMonitor(button.id);
             }

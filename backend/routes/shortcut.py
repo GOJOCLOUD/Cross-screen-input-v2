@@ -198,18 +198,15 @@ def execute_shortcut(shortcut_str):
         try:
             if len(keys) == 1:
                 # 单个键
-                info(f"执行单个键: {keys[0]}", "shortcut")
                 keyboard.press(keys[0])
                 keyboard.release(keys[0])
             else:
                 # 组合键
                 modifiers = keys[:-1]
                 main_key = keys[-1]
-                info(f"执行组合键: 修饰键={modifiers}, 主键={main_key}", "shortcut")
                 with keyboard.pressed(*modifiers):
                     keyboard.press(main_key)
                     keyboard.release(main_key)
-            info(f"快捷键执行成功: {shortcut_str}", "shortcut")
         except Exception as e:
             error(f"执行按键操作失败: {str(e)}", "shortcut")
             raise ValueError(f"执行按键操作失败: {str(e)}")

@@ -23,7 +23,13 @@ const RequestManager = {
         }
         
         // 发起请求
-        const promise = fetch(url, options)
+        const fetchOptions = {
+            ...options,
+            cache: 'no-store',
+            keepalive: true
+        };
+        
+        const promise = fetch(url, fetchOptions)
             .then(response => {
                 this.pending.delete(key);
                 if (!response.ok) {
