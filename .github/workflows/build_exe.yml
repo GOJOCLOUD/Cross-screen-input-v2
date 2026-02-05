@@ -101,11 +101,37 @@ jobs:
     - name: Build Electron app
       run: |
         cd electron
+        echo "Current directory: $(pwd)"
+        echo "Files in electron directory:"
+        dir
+        echo "Checking for package.json:"
+        if (Test-Path "package.json") {
+          echo "package.json found"
+        } else {
+          echo "package.json not found"
+        }
+        echo "Installing dependencies..."
+        npm install
+        echo "Running build:win..."
         npm run build:win
+        echo "Build completed. Checking results..."
+        if (Test-Path "dist") {
+          echo "Files in dist directory:"
+          dir dist
+        } else {
+          echo "dist directory not found"
+        }
         
     - name: Verify Electron build
       run: |
-        if (!(Test-Path "dist\*.exe")) {
+        echo "Current directory: $(pwd)"
+        echo "Checking for Electron executable..."
+        if (Test-Path "electron\dist\*.exe") {
+          echo "Electron executable found at: electron\dist\*.exe"
+          dir electron\dist\*.exe
+        } else {
+          echo "Electron executable not found. Listing directory structure:"
+          dir /s
           Write-Error "Electron build failed"
           exit 1
         }
