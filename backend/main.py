@@ -66,16 +66,16 @@ app.include_router(desktop_api.router, prefix="/api/desktop", tags=["desktop"])
 @app.on_event("startup")
 async def startup_event():
     """应用启动时的初始化"""
-    print("\n🖱️ 正在启动鼠标按键监听器...")
+    print("\n[INFO] 正在启动鼠标按键监听器...")
     try:
         from routes.mouse_listener import start_listener
         result = start_listener()
         if result.get('success'):
-            print("✅ 鼠标按键监听器已启动")
+            print("[SUCCESS] 鼠标按键监听器已启动")
         else:
-            print(f"⚠️ 鼠标监听器启动失败: {result.get('message', '未知错误')}")
+            print(f"[WARNING] 鼠标监听器启动失败: {result.get('message', '未知错误')}")
     except Exception as e:
-        print(f"⚠️ 鼠标监听器启动失败: {e}")
+        print(f"[WARNING] 鼠标监听器启动失败: {e}")
 
 # 应用关闭时停止监听器
 @app.on_event("shutdown")
@@ -84,9 +84,9 @@ async def shutdown_event():
     try:
         from routes.mouse_listener import stop_listener
         stop_listener()
-        print("🖱️ 鼠标监听器已停止")
+        print("[INFO] 鼠标监听器已停止")
     except Exception as e:
-        print(f"⚠️ 停止监听器失败: {e}")
+        print(f"[WARNING] 停止监听器失败: {e}")
 
 # 根路径返回desktop.html（仅限本机访问）
 @app.get("/", response_class=HTMLResponse)
@@ -225,12 +225,12 @@ if __name__ == "__main__":
     try:
         from utils.port_manager import kill_process_on_port
         if not kill_process_on_port(port):
-            print(f"⚠️ 清理端口 {port} 失败，可能无法启动服务")
+            print(f"[WARNING] 清理端口 {port} 失败，可能无法启动服务")
         else:
             import time
             time.sleep(0.5)  # 等待进程完全退出
     except Exception as e:
-        print(f"⚠️ 清理端口时出错: {e}")
+        print(f"[WARNING] 清理端口时出错: {e}")
     
     # 获取本地IP
     local_ip = get_local_ip()
