@@ -1,0 +1,122 @@
+name: Build Windows EXE
+
+on:
+  push:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check directory structure
+      run: |
+        pwd
+        dir -Recurse
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Cache Python dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+          
+    - name: Cache Node modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - name: Install Python dependencies
+      run: |
+        cd backend
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+        
+    - name: Install Node.js dependencies
+      run: |
+        cd electron
+        npm install
+        
+    - name: Verify assets
+      run: |
+        if (!(Test-Path "assets\icons\icon.ico")) {
+          Write-Error "Missing icon.ico file"
+          exit 1
+        }
+        if (!(Test-Path "assets\icons\app-icon.png")) {
+          Write-Error "Missing app-icon.png file"
+          exit 1
+        }
+        
+    - name: Build Python backend
+      run: |
+        cd backend
+        pyinstaller kpsr-backend.spec --clean
+        
+    - name: Verify backend build
+      run: |
+        if (!(Test-Path "dist\kpsr-backend\kpsr-backend.exe")) {
+          Write-Error "Backend build failed"
+          exit 1
+        }
+        
+    - name: Build Electron app
+      run: |
+        cd electron
+        npm run build:win
+        
+    - name: Verify Electron build
+      run: |
+        if (!(Test-Path "dist\*.exe")) {
+          Write-Error "Electron build failed"
+          exit 1
+        }
+        
+    - name: Create release package
+      shell: powershell
+      run: |
+        mkdir release
+        copy electron\dist\*.exe release\
+        xcopy /E /I backend\dist\kpsr-backend\* release\kpsr-backend\
+        
+    - name: List release files
+      run: |
+        dir release /s
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: KPSR-Windows-EXE
+        path: release/
+        retention-days: 30
+        
+    - name: Create Release
+      if: github.event_name == 'release' && github.event.action == 'published'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: release/*
+        draft: false
+        prerelease: false
