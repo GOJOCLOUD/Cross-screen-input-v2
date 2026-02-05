@@ -84,18 +84,26 @@ function showLoadingError(message) {
 // 检查服务器是否就绪（单次检查）
 function checkServerOnce(port) {
   return new Promise((resolve) => {
+    console.log(`检查服务器是否就绪，端口: ${port}`);
+    
     const req = http.request({
       hostname: '127.0.0.1',
       port: port,
       path: '/health',
       method: 'GET',
-      timeout: 500
+      timeout: 1000 // 增加超时时间
     }, (res) => {
+      console.log(`服务器响应，状态码: ${res.statusCode}`);
       resolve(res.statusCode === 200);
     });
     
-    req.on('error', () => resolve(false));
+    req.on('error', (err) => {
+      console.log(`服务器检查错误: ${err.message}`);
+      resolve(false);
+    });
+    
     req.on('timeout', () => {
+      console.log('服务器检查超时');
       req.destroy();
       resolve(false);
     });
@@ -105,17 +113,27 @@ function checkServerOnce(port) {
 }
 
 // 等待服务器就绪
-async function waitForServer(port, timeout = 10000) {
+async function waitForServer(port, timeout = 15000) {
+  console.log(`开始等待服务器就绪，端口: ${port}，超时时间: ${timeout}ms`);
   const startTime = Date.now();
   
+  let attempts = 0;
   while (Date.now() - startTime < timeout) {
+    attempts++;
+    console.log(`尝试连接服务器 (${attempts}): ${new Date().toISOString()}`);
+    
     if (await checkServerOnce(port)) {
+      console.log(`服务器已就绪，耗时: ${Date.now() - startTime}ms`);
       return true;
     }
-    await new Promise(r => setTimeout(r, 100));
+    
+    console.log(`服务器未就绪，等待 500ms 后重试...`);
+    await new Promise(r => setTimeout(r, 500)); // 增加等待时间
   }
   
-  throw new Error('服务器启动超时');
+  const elapsed = Date.now() - startTime;
+  console.log(`服务器启动超时，耗时: ${elapsed}ms`);
+  throw new Error(`服务器启动超时，耗时 ${elapsed}ms`);
 }
 
 // 启动 Python 后端
