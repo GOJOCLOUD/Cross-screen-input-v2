@@ -136,18 +136,26 @@ def execute_shortcut(shortcut_str):
         if not keys:
             raise ValueError("快捷键解析结果为空")
         
+        info(f"解析得到的按键: {keys}", "shortcut")
+        
         # 执行快捷键
         try:
             if len(keys) == 1:
                 # 单个键
+                info(f"执行单个键: {keys[0]}", "shortcut")
                 keyboard.press(keys[0])
                 keyboard.release(keys[0])
             else:
                 # 组合键
-                with keyboard.pressed(*keys[:-1]):
-                    keyboard.press(keys[-1])
-                    keyboard.release(keys[-1])
+                modifiers = keys[:-1]
+                main_key = keys[-1]
+                info(f"执行组合键: 修饰键={modifiers}, 主键={main_key}", "shortcut")
+                with keyboard.pressed(*modifiers):
+                    keyboard.press(main_key)
+                    keyboard.release(main_key)
+            info(f"快捷键执行成功: {shortcut_str}", "shortcut")
         except Exception as e:
+            error(f"执行按键操作失败: {str(e)}", "shortcut")
             raise ValueError(f"执行按键操作失败: {str(e)}")
         
         return True
@@ -155,6 +163,7 @@ def execute_shortcut(shortcut_str):
         # 重新抛出 ValueError，让调用者处理
         raise
     except Exception as e:
+        error(f"执行快捷键失败: {str(e)}", "shortcut")
         raise ValueError(f"执行快捷键失败: {str(e)}")
 
 # 执行快捷键端点
@@ -164,7 +173,7 @@ async def execute_shortcut_endpoint(request: ShortcutRequest):
     try:
         # 验证快捷键格式
         if not request.shortcut:
-            error(f"快捷键不能为空")
+            error(f"快捷键不能为空", "shortcut")
             raise HTTPException(
                 status_code=400,
                 detail="快捷键不能为空"
@@ -173,19 +182,19 @@ async def execute_shortcut_endpoint(request: ShortcutRequest):
         # 转换为小写格式
         shortcut_str = request.shortcut.strip().lower()
         
-        info(f"执行快捷键: {shortcut_str} (类型: {request.action_type})")
+        info(f"执行快捷键: {shortcut_str} (类型: {request.action_type})", "shortcut")
         
         # 执行快捷键
         execute_shortcut(shortcut_str)
         
-        info(f"快捷键执行成功: {shortcut_str}")
+        info(f"快捷键执行成功: {shortcut_str}", "shortcut")
         
         return ShortcutResponse(
             status="success",
             message="快捷键执行成功"
         )
     except ValueError as e:
-        error(f"快捷键执行失败 (ValueError): {str(e)}")
+        error(f"快捷键执行失败 (ValueError): {str(e)}", "shortcut")
         raise HTTPException(
             status_code=400,
             detail=str(e)
@@ -193,7 +202,7 @@ async def execute_shortcut_endpoint(request: ShortcutRequest):
     except HTTPException:
         raise
     except Exception as e:
-        error(f"快捷键执行失败 (Exception): {str(e)}")
+        error(f"快捷键执行失败 (Exception): {str(e)}", "shortcut")
         raise HTTPException(
             status_code=500,
             detail=f"执行快捷键失败: {str(e)}"
