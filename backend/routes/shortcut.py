@@ -55,6 +55,9 @@ BASE_KEY_MAP = {
     'return': Key.enter,  # 别名
     'tab': Key.tab,
     'space': Key.space,
+    'prtsc': Key.print_screen,  # 打印屏幕键
+    'printscreen': Key.print_screen,  # 别名
+    'print_scr': Key.print_screen,  # 别名
     
     # 锁定键
     'caps_lock': Key.caps_lock,
