@@ -7,15 +7,30 @@ const treeKill = require('tree-kill');
 
 // 日志文件路径
 function getLogFilePath() {
-  const logDir = path.join(app.getPath('appData'), 'KPSR', 'logs');
+  // 使用桌面作为日志目录，更易访问
+  let logDir = path.join(app.getPath('desktop'), 'KPSR-Logs');
   // 确保日志目录存在
   if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir, { recursive: true });
+    try {
+      fs.mkdirSync(logDir, { recursive: true });
+      console.log('日志目录已创建:', logDir);
+    } catch (err) {
+      console.error('创建日志目录失败:', err);
+      // 回退到应用数据目录
+      const fallbackDir = path.join(app.getPath('appData'), 'KPSR', 'logs');
+      if (!fs.existsSync(fallbackDir)) {
+        fs.mkdirSync(fallbackDir, { recursive: true });
+      }
+      console.log('使用回退日志目录:', fallbackDir);
+      logDir = fallbackDir;
+    }
   }
   // 生成日志文件名（包含日期时间）
   const now = new Date();
   const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}`;
-  return path.join(logDir, `kpsr-${timestamp}.log`);
+  const logPath = path.join(logDir, `kpsr-${timestamp}.log`);
+  console.log('日志文件路径:', logPath);
+  return logPath;
 }
 
 // 初始化日志文件
