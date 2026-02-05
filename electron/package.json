@@ -55,15 +55,15 @@
           ]
         }
       ],
-      "icon": "assets/icons/installer-icon.ico"
+      "icon": "../assets/icons/installer-icon.ico"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "installerIcon": "assets/icons/installer-icon.ico",
-      "uninstallerIcon": "assets/icons/installer-icon.ico"
+      "installerIcon": "../assets/icons/installer-icon.ico",
+      "uninstallerIcon": "../assets/icons/installer-icon.ico"
     }
   }
 }

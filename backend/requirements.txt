@@ -24,3 +24,9 @@ psutil>=5.8.0
 
 # 文件上传支持
 python-multipart
+
+# 配置管理（Pydantic V2需要）
+pydantic-settings
+
+# 类型提示扩展
+typing_extensions

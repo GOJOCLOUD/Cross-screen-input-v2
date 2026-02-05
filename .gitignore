@@ -16,6 +16,7 @@ ENV/
 *.spec.bak
 *.manifest
 *.spec
+!backend/kpsr-backend.spec
 
 # Electron
 node_modules/
