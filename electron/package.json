@@ -44,6 +44,13 @@
         "filter": [
           "**/*"
         ]
+      },
+      {
+        "from": "../assets/icons",
+        "to": "icons",
+        "filter": [
+          "**/*"
+        ]
       }
     ],
     "win": {
