@@ -1,10 +1,10 @@
 @echo off
-REM KPSR Windows打包脚本
+REM KPSR Windows打包脚本 - MSIX版本
 
 setlocal enabledelayedexpansion
 
 echo ========================================
-echo KPSR 跨屏输入 - Windows打包脚本
+echo KPSR 跨屏输入 - Windows MSIX打包脚本
 echo ========================================
 echo.
 
@@ -97,13 +97,14 @@ echo 打包文件位于: electron\dist\
 echo.
 
 REM 列出打包结果
-dir /b electron\dist\*.exe 2>nul
+dir /b electron\dist\*.msix 2>nul
 if errorlevel 1 (
-    echo 未找到.exe文件
+    echo 未找到.msix文件
 ) else (
     echo.
     echo 提示：
-    echo - Windows: 运行.exe安装程序
+    echo - Windows: 双击.msix文件安装应用
+    echo - 如果提示"无法安装此应用"，需要在Windows设置中启用"旁加载应用"
 )
 
 pause

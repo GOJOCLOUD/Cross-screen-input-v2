@@ -1,4 +1,4 @@
-name: Build Windows EXE
+name: Build Windows MSIX
 
 on:
   push:
@@ -125,12 +125,12 @@ jobs:
     - name: Verify Electron build
       run: |
         echo "Current directory: $(pwd)"
-        echo "Checking for Electron executable..."
-        if (Test-Path "electron\dist\*.exe") {
-          echo "Electron executable found at: electron\dist\*.exe"
-          dir electron\dist\*.exe
+        echo "Checking for Electron package..."
+        if (Test-Path "electron\dist\*.msix") {
+          echo "Electron package found at: electron\dist\*.msix"
+          dir electron\dist\*.msix
         } else {
-          echo "Electron executable not found. Listing directory structure:"
+          echo "Electron package not found. Listing directory structure:"
           dir /s
           Write-Error "Electron build failed"
           exit 1
@@ -146,8 +146,8 @@ jobs:
         if (Test-Path "electron\dist") {
           echo "Files in electron\dist:"
           dir electron\dist
-          echo "Copying electron executables..."
-          copy electron\dist\*.exe release\
+          echo "Copying electron packages..."
+          copy electron\dist\*.msix release\
         } else {
           echo "electron\dist directory not found"
         }
@@ -170,7 +170,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: KPSR-Windows-EXE
+        name: KPSR-Windows-MSIX
         path: release/
         retention-days: 30
         
