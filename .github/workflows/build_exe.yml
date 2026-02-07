@@ -148,6 +148,13 @@ jobs:
           dir electron\dist
           echo "Copying electron packages..."
           copy electron\dist\*.appx release\
+          echo "Renaming .appx to .msix..."
+          Get-ChildItem release\*.appx | ForEach-Object { 
+            $newName = $_.Name -replace '\.appx$', '.msix'
+            Rename-Item $_.FullName -NewName $newName
+          }
+          echo "Files after rename:"
+          dir release
         } else {
           echo "electron\dist directory not found"
         }
@@ -170,7 +177,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: KPSR-Windows-APPX
+        name: KPSR-Windows-MSIX
         path: release/
         retention-days: 30
         
