@@ -76,3 +76,8 @@ electron/build/
 # 用户数据（可选，如果不想提交用户配置）
 # backend/data/*.json
 # 但保留 .gitkeep
+
+# PKG打包文件
+pkg/
+build-root/
+*.pkg

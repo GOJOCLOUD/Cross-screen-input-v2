@@ -1,1 +1,20 @@
-[]
+{
+  "buttons": [
+    {
+      "name": "截图",
+      "icon": "😁",
+      "type": "toggle",
+      "toggleActions": {
+        "activate": "cmd+shift+5",
+        "deactivate": "cmd+shift+esc"
+      },
+      "autoCloseDuration": 3,
+      "id": "btn_1770904090749_8944",
+      "created_at": "2026-02-12T21:48:10.749505",
+      "updated_at": "2026-02-12T21:48:10.749505",
+      "order": 1770904090749
+    }
+  ],
+  "version": "1.0",
+  "last_updated": "2026-02-12T21:48:10.749617"
+}

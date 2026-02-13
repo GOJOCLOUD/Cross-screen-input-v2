@@ -2,36 +2,36 @@
 # -*- coding: utf-8 -*-
 """
 平台工具模块
-Windows专用实现
+Mac专用实现
 """
 
 from pynput.keyboard import Key
 
-# Windows专用常量
-CURRENT_PLATFORM = 'windows'
-IS_WINDOWS = True
-IS_MAC = False
+# Mac专用常量
+CURRENT_PLATFORM = 'mac'
+IS_WINDOWS = False
+IS_MAC = True
 IS_LINUX = False
 
 
 def get_platform():
     """
     检测操作系统平台
-    返回: 'windows' (本版本仅支持Windows)
+    返回: 'mac' (本版本仅支持Mac)
     """
-    return 'windows'
+    return 'mac'
 
 
 def get_modifier_key_map():
     """
-    获取Windows平台特定的修饰键映射
+    获取Mac平台特定的修饰键映射
     """
     return {
-        'ctrl': Key.ctrl,   # Windows 上 ctrl 映射到 Control
-        'cmd': Key.cmd,     # cmd 映射到 Windows键
-        'win': Key.cmd,     # win 映射到 Windows键
+        'ctrl': Key.ctrl,   # Mac 上 ctrl 映射到 Control
+        'cmd': Key.cmd,     # cmd 映射到 Command键
+        'win': Key.cmd,     # win 也映射到 Command键（兼容性）
         'shift': Key.shift,
-        'alt': Key.alt,
+        'alt': Key.alt,     # Mac 上 alt 映射到 Option键
     }
 
 

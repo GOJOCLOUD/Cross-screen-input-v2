@@ -3,7 +3,7 @@
 """
 鼠标按键监听服务
 监听电脑上的鼠标按键事件，执行对应的快捷键映射
-支持 macOS（使用 Quartz）和 Windows（使用 pynput）
+macOS 专用版本（使用 Quartz）
 """
 
 from fastapi import APIRouter, HTTPException
@@ -26,7 +26,6 @@ router = APIRouter()
 
 # 键盘控制器
 keyboard_controller = KeyboardController()
-
 
 # 监听器状态
 listener_thread = None
@@ -91,16 +90,11 @@ def load_mappings():
 # 预解析的快捷键缓存，避免每次都解析
 _shortcut_cache = {}
 
-# 修饰键映射（预定义）
-_modifier_map_mac = {
+# 修饰键映射（macOS 专用）
+_modifier_map = {
     'ctrl': Key.cmd, 'cmd': Key.cmd, 'alt': Key.alt, 
     'shift': Key.shift, 'win': Key.cmd,
 }
-_modifier_map_win = {
-    'ctrl': Key.ctrl, 'cmd': Key.cmd, 'alt': Key.alt,
-    'shift': Key.shift, 'win': Key.cmd,
-}
-_modifier_map = _modifier_map_mac if is_mac else _modifier_map_win
 
 # 特殊键映射（预定义）
 _special_keys = {
@@ -228,8 +222,8 @@ def execute_shortcut_fast(shortcut: str):
     try:
         shortcut = shortcut.strip().lower()
         
-        # 先检查是否是系统命令（仅 macOS）
-        if is_mac and shortcut in _system_commands:
+        # 先检查是否是系统命令
+        if shortcut in _system_commands:
             execute_system_command(shortcut)
             return
         
@@ -256,8 +250,8 @@ def execute_shortcut(shortcut: str):
     try:
         shortcut = shortcut.strip().lower()
         
-        # 先检查是否是系统命令（仅 macOS）
-        if is_mac and shortcut in _system_commands:
+        # 先检查是否是系统命令
+        if shortcut in _system_commands:
             execute_system_command(shortcut)
             return
         
@@ -398,367 +392,237 @@ def handle_mouse_button(button_number: int) -> bool:
     return False  # 未处理，让系统继续处理
 
 # macOS 专用监听器
-if is_mac:
-    import Quartz
-    from Quartz import (
-        CGEventTapCreate, CGEventTapEnable, CGEventTapIsEnabled,
-        kCGSessionEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault,
-        kCGEventTapOptionListenOnly,
-        CGEventMaskBit, kCGEventOtherMouseDown,
-        CGEventGetIntegerValueField, kCGMouseEventButtonNumber,
-        CFMachPortCreateRunLoopSource, CFRunLoopGetCurrent, CFRunLoopAddSource,
-        kCFRunLoopCommonModes, CFRunLoopRun, CFRunLoopStop
-    )
-    
-    _run_loop = None
-    _tap = None
-    
-    def check_accessibility_permission() -> bool:
-        """检测 macOS 辅助功能权限"""
-        global has_permission, permission_message
-        try:
-            # 尝试创建一个测试用的事件 tap
-            test_tap = CGEventTapCreate(
-                kCGSessionEventTap,
-                kCGHeadInsertEventTap,
-                kCGEventTapOptionListenOnly,  # 只监听，权限要求更低
-                CGEventMaskBit(kCGEventOtherMouseDown),
-                lambda *args: args[2],  # 空回调
-                None
-            )
-            if test_tap is not None:
-                has_permission = True
-                permission_message = "已获得辅助功能权限，鼠标侧键功能可用"
-                app_logger.info(permission_message, source="mouse_listener")
-                return True
-            else:
-                has_permission = False
-                permission_message = "未获得辅助功能权限，鼠标侧键功能不可用。请在 系统设置 > 隐私与安全性 > 辅助功能 中授权本程序"
-                app_logger.warning(permission_message, source="mouse_listener")
-                return False
-        except Exception as e:
-            has_permission = False
-            permission_message = f"权限检测失败: {e}"
-            app_logger.error(permission_message, source="mouse_listener")
-            return False
-    
-    def _mouse_callback(proxy, event_type, event, refcon):
-        """macOS 鼠标事件回调 - 极速版"""
-        global _tap
-        # 确保 tap 始终启用（系统可能因回调超时而禁用）
-        if _tap and not CGEventTapIsEnabled(_tap):
-            CGEventTapEnable(_tap, True)
-        
-        try:
-            button_number = CGEventGetIntegerValueField(event, kCGMouseEventButtonNumber)
-            handled = handle_mouse_button(button_number)
-            if handled:
-                # 返回 None 阻止事件传递给系统，避免触发系统默认行为（如前进/后退）
-                return None
-        except:
-            pass
-        return event
-    
-    def _run_macos_listener():
-        """运行 macOS 监听器"""
-        global _run_loop, _tap, is_listening
-        
-        try:
-            # 监听所有鼠标按下事件（包括侧键）
-            mask = CGEventMaskBit(kCGEventOtherMouseDown)
-            
-            # kCGSessionEventTap + kCGHeadInsertEventTap = 会话级最高优先级
-            # kCGHIDEventTap 需要 root 权限，普通应用无法使用
-            _tap = CGEventTapCreate(
-                kCGSessionEventTap,       # 会话级别（普通权限可用的最高级别）
-                kCGHeadInsertEventTap,    # 插入队列头部，优先于其他 tap
-                kCGEventTapOptionDefault, # 可以修改/阻止事件
-                mask,
-                _mouse_callback,
-                None
-            )
-            
-            if _tap is None:
-                app_logger.error("创建事件 tap 失败，请检查辅助功能权限", source="mouse_listener")
-                is_listening = False
-                return
-            
-            CGEventTapEnable(_tap, True)
-            
-            source = CFMachPortCreateRunLoopSource(None, _tap, 0)
-            _run_loop = CFRunLoopGetCurrent()
-            CFRunLoopAddSource(_run_loop, source, kCFRunLoopCommonModes)
-            
-            app_logger.info("macOS 监听器已启动", source="mouse_listener")
-            CFRunLoopRun()
-            
-        except Exception as e:
-            app_logger.error(f"macOS 监听器异常: {e}", source="mouse_listener")
-            is_listening = False
+import Quartz
+from Quartz import (
+    CGEventTapCreate, CGEventTapEnable, CGEventTapIsEnabled,
+    kCGSessionEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault,
+    kCGEventTapOptionListenOnly,
+    CGEventMaskBit, kCGEventOtherMouseDown,
+    CGEventGetIntegerValueField, kCGMouseEventButtonNumber,
+    CFMachPortCreateRunLoopSource, CFRunLoopGetCurrent, CFRunLoopAddSource,
+    kCFRunLoopCommonModes, CFRunLoopRun, CFRunLoopStop
+)
 
-# Windows 专用监听器
-else:
-    from pynput import mouse as pynput_mouse
-    _pynput_listener = None
-    
-    def check_accessibility_permission() -> bool:
-        """检测 Windows 权限（通常不需要特殊权限）"""
-        global has_permission, permission_message
-        try:
-            # Windows 上 pynput 通常不需要特殊权限
-            # 但某些情况下可能需要管理员权限
+_run_loop = None
+_tap = None
+
+def check_accessibility_permission() -> bool:
+    """检测 macOS 辅助功能权限"""
+    global has_permission, permission_message
+    try:
+        # 尝试创建一个测试用的事件 tap
+        test_tap = CGEventTapCreate(
+            kCGSessionEventTap,
+            kCGHeadInsertEventTap,
+            kCGEventTapOptionListenOnly,  # 只监听，权限要求更低
+            CGEventMaskBit(kCGEventOtherMouseDown),
+            lambda *args: args[2],  # 空回调
+            None
+        )
+        if test_tap is not None:
             has_permission = True
-            permission_message = "Windows 系统，鼠标侧键功能可用"
+            permission_message = "已获得辅助功能权限，鼠标侧键功能可用"
             app_logger.info(permission_message, source="mouse_listener")
             return True
-        except Exception as e:
+        else:
             has_permission = False
-            permission_message = f"权限检测失败: {e}"
-            app_logger.error(permission_message, source="mouse_listener")
+            permission_message = "未获得辅助功能权限，鼠标侧键功能不可用。请在 系统设置 > 隐私与安全性 > 辅助功能 中授权本程序"
+            app_logger.warning(permission_message, source="mouse_listener")
             return False
+    except Exception as e:
+        has_permission = False
+        permission_message = f"权限检测失败: {e}"
+        app_logger.error(permission_message, source="mouse_listener")
+        return False
+
+def _mouse_callback(proxy, event_type, event, refcon):
+    """macOS 鼠标事件回调 - 极速版"""
+    global _tap
+    # 确保 tap 始终启用（系统可能因回调超时而禁用）
+    if _tap and not CGEventTapIsEnabled(_tap):
+        CGEventTapEnable(_tap, True)
     
-    def _on_click(x, y, button, pressed):
-        """pynput 鼠标点击回调"""
-        if not pressed:
+    try:
+        button_number = CGEventGetIntegerValueField(event, kCGMouseEventButtonNumber)
+        handled = handle_mouse_button(button_number)
+        if handled:
+            # 返回 None 阻止事件传递给系统，避免触发系统默认行为（如前进/后退）
+            return None
+    except:
+        pass
+    return event
+
+def _run_macos_listener():
+    """运行 macOS 监听器"""
+    global _run_loop, _tap, is_listening
+    
+    try:
+        # 监听所有鼠标按下事件（包括侧键）
+        mask = CGEventMaskBit(kCGEventOtherMouseDown)
+        
+        # kCGSessionEventTap + kCGHeadInsertEventTap = 会话级最高优先级
+        _tap = CGEventTapCreate(
+            kCGSessionEventTap,       # 会话级别（普通权限可用的最高级别）
+            kCGHeadInsertEventTap,    # 插入队列头部，优先于其他 tap
+            kCGEventTapOptionDefault, # 可以修改/阻止事件
+            mask,
+            _mouse_callback,
+            None
+        )
+        
+        if _tap is None:
+            app_logger.error("创建事件 tap 失败，请检查辅助功能权限", source="mouse_listener")
+            is_listening = False
             return
         
-        button_map = {
-            pynput_mouse.Button.left: 0,
-            pynput_mouse.Button.right: 1,
-            pynput_mouse.Button.middle: 2,
-        }
+        CGEventTapEnable(_tap, True)
         
-        button_number = button_map.get(button)
+        source = CFMachPortCreateRunLoopSource(None, _tap, 0)
+        _run_loop = CFRunLoopGetCurrent()
+        CFRunLoopAddSource(_run_loop, source, kCFRunLoopCommonModes)
         
-        # 尝试识别侧键
-        if button_number is None:
-            button_str = str(button).lower()
-            if 'x1' in button_str or 'back' in button_str:
-                button_number = 3
-            elif 'x2' in button_str or 'forward' in button_str:
-                button_number = 4
-            else:
-                return
+        app_logger.info("macOS 监听器已启动", source="mouse_listener")
+        CFRunLoopRun()
         
-        # pynput 在 Windows 上需要使用 suppress 参数来阻止事件
-        # 这里先处理事件，阻止功能需要在 Listener 创建时设置
-        handle_mouse_button(button_number)
+    except Exception as e:
+        app_logger.error(f"macOS 监听器异常: {e}", source="mouse_listener")
+        is_listening = False
 
 def start_listener():
     """启动鼠标监听"""
     global listener_thread, is_listening, has_permission
-    if not is_mac:
-        global _pynput_listener
     
     # 如果已经在运行，重新加载映射（因为配置可能已更新）
     if is_listening:
-        load_mappings()  # 重新加载映射
-        app_logger.info("监听器已在运行，已重新加载映射", source="mouse_listener")
-        return {"success": True, "message": "监听器已在运行，映射已更新"}
+        load_mappings()
+        return {
+            'success': True,
+            'message': '监听器已在运行，已重新加载配置',
+            'permission': has_permission,
+            'permission_message': permission_message
+        }
     
-    # 首先检测权限
-    if has_permission is None:
-        check_accessibility_permission()
+    # 检查权限
+    if not check_accessibility_permission():
+        return {
+            'success': False,
+            'message': '未获得辅助功能权限，无法启动监听器',
+            'permission': has_permission,
+            'permission_message': permission_message
+        }
     
-    if not has_permission:
-        app_logger.warning(f"跳过鼠标监听: {permission_message}", source="mouse_listener")
-        return {"success": False, "message": permission_message, "need_permission": True}
-    
+    # 加载映射
     load_mappings()
     
-    # 即使没有按钮映射也启动监听器，因为用户可能稍后会添加按钮
-    # 监听器会正常运行，只是没有映射时不会执行任何操作
-    if not button_mappings and not sequence_mappings:
-        app_logger.info("当前没有配置按键映射，监听器将启动但不会执行任何操作", source="mouse_listener")
+    # 启动监听线程
+    listener_thread = threading.Thread(target=_run_macos_listener, daemon=True)
+    listener_thread.start()
+    is_listening = True
     
-    try:
-        if is_mac:
-            listener_thread = threading.Thread(target=_run_macos_listener, daemon=True)
-            listener_thread.start()
-            is_listening = True
-            app_logger.info("监听器启动中...", source="mouse_listener")
-            return {"success": True, "message": "监听器已启动"}
-        else:
-            _pynput_listener = pynput_mouse.Listener(on_click=_on_click)
-            _pynput_listener.start()
-            is_listening = True
-            app_logger.info("监听器已启动", source="mouse_listener")
-            return {"success": True, "message": "监听器已启动"}
-    except Exception as e:
-        app_logger.error(f"启动监听器失败: {e}", source="mouse_listener")
-        is_listening = False
-        return {"success": False, "message": f"启动失败: {e}"}
+    return {
+        'success': True,
+        'message': '鼠标监听器启动成功',
+        'permission': has_permission,
+        'permission_message': permission_message
+    }
 
 def stop_listener():
     """停止鼠标监听"""
-    global is_listening
+    global listener_thread, is_listening, _run_loop, _tap
+    
+    if not is_listening:
+        return {
+            'success': True,
+            'message': '监听器未运行'
+        }
     
     try:
-        # 清理待处理的定时器
-        cancel_pending_single_key()
+        # 停止 run loop
+        if _run_loop:
+            CFRunLoopStop(_run_loop)
+            _run_loop = None
         
-        # 清空按键历史
-        global key_history
-        key_history = []
+        # 禁用 tap
+        if _tap:
+            CGEventTapEnable(_tap, False)
+            _tap = None
         
-        if is_mac:
-            global _run_loop
-            if _run_loop:
-                CFRunLoopStop(_run_loop)
-                _run_loop = None
-        else:
-            global _pynput_listener
-            if _pynput_listener:
-                _pynput_listener.stop()
-                _pynput_listener = None
+        is_listening = False
+        
+        return {
+            'success': True,
+            'message': '鼠标监听器已停止'
+        }
     except Exception as e:
-        app_logger.error(f"停止监听器时出错: {e}", source="mouse_listener")
-    
-    is_listening = False
-    app_logger.info("监听器已停止", source="mouse_listener")
+        app_logger.error(f"停止监听器失败: {e}", source="mouse_listener")
+        return {
+            'success': False,
+            'message': f'停止监听器失败: {e}'
+        }
 
-# API 端点
-class ListenerStatus(BaseModel):
-    running: bool
-    mappings: dict
-    sequences: list = []
-    message: str
-    has_permission: Optional[bool] = None
-    permission_message: str = ""
-
-@router.get("/status")
-async def get_listener_status():
-    """获取监听器状态"""
-    return ListenerStatus(
-        running=is_listening,
-        mappings=button_mappings,
-        sequences=[m['sequence'] for m in sequence_mappings],
-        message="监听器正在运行" if is_listening else "监听器未运行",
-        has_permission=has_permission,
-        permission_message=permission_message
-    )
-
-
-def is_listener_running() -> bool:
+def is_listener_running():
     """检查监听器是否正在运行"""
     return is_listening
 
-def reload_and_restart_listener():
-    """重新加载映射并重启监听器（用于按钮配置变更后）"""
-    global is_listening
-    
-    # 重新加载映射
+def reload_mappings():
+    """重新加载按键映射"""
     load_mappings()
-    
-    # 如果监听器正在运行，只需要重新加载映射即可（start_listener 会自动处理）
-    # 如果监听器未运行，则启动它
-    if is_listening:
-        # 监听器已在运行，映射已在上面重新加载，直接返回
-        app_logger.info("监听器已在运行，映射已更新", source="mouse_listener")
-    else:
-        # 监听器未运行，启动它
-        result = start_listener()
-        if result.get("success"):
-            app_logger.info("监听器已重新加载映射并启动", source="mouse_listener")
-        else:
-            app_logger.warning(f"启动监听器失败: {result.get('message')}", source="mouse_listener")
-
-@router.get("/permission")
-async def check_permission():
-    """检测辅助功能权限"""
-    global has_permission
-    # 强制重新检测
-    has_permission = None
-    result = check_accessibility_permission()
     return {
-        "has_permission": has_permission,
-        "message": permission_message,
-        "platform": "macOS" if is_mac else "Windows"
+        'success': True,
+        'message': '按键映射已重新加载',
+        'button_mappings': button_mappings,
+        'sequence_mappings': sequence_mappings
     }
 
+# API 端点
 @router.post("/start")
-async def start_mouse_listener():
-    """启动鼠标监听"""
-    try:
-        result = start_listener()
-        return {
-            "status": "success" if result.get("success") else "failed",
-            "running": is_listening,
-            "mappings": button_mappings,
-            "message": result.get("message", ""),
-            "has_permission": has_permission,
-            "need_permission": result.get("need_permission", False)
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def api_start_listener():
+    """启动鼠标监听器"""
+    return start_listener()
 
 @router.post("/stop")
-async def stop_mouse_listener():
-    """停止鼠标监听"""
-    try:
-        stop_listener()
-        return {
-            "status": "success",
-            "running": is_listening,
-            "message": "监听器已停止"
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def api_stop_listener():
+    """停止鼠标监听器"""
+    return stop_listener()
+
+@router.get("/status")
+async def api_get_status():
+    """获取监听器状态"""
+    return {
+        'is_listening': is_listening,
+        'permission': has_permission,
+        'permission_message': permission_message,
+        'button_mappings_count': len(button_mappings),
+        'sequence_mappings_count': len(sequence_mappings)
+    }
 
 @router.post("/reload")
-async def reload_mappings_endpoint():
+async def api_reload_mappings():
     """重新加载按键映射"""
-    try:
-        load_mappings()
-        return {
-            "status": "success",
-            "mappings": button_mappings,
-            "sequences": [m['sequence'] for m in sequence_mappings],
-            "message": f"已加载 {len(button_mappings)} 个单键映射和 {len(sequence_mappings)} 个序列映射"
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return reload_mappings()
 
-@router.get("/system-commands")
-async def get_system_commands():
-    """获取可用的系统命令列表（仅 macOS）"""
-    if not is_mac:
-        return {
-            "status": "success",
-            "available": False,
-            "message": "系统命令仅在 macOS 上可用",
-            "commands": {}
-        }
-    
-    # 返回命令说明（更友好的描述）
-    command_descriptions = {
-        'launchpad': '启动台',
-        'mission_control': '调度中心',
-        'mission': '调度中心（简写）',
-        'spotlight': 'Spotlight 搜索',
-        'siri': 'Siri',
-        'finder': 'Finder',
-        'desktop': '打开桌面文件夹',
-        'downloads': '打开下载文件夹',
-        'documents': '打开文稿文件夹',
-        'screenshot': '截图（区域选择）',
-        'screenshot_area': '截图（区域选择）',
-        'screenshot_window': '截图（窗口选择）',
-        'screenshot_full': '截图（全屏）',
-        'volume_up': '音量增大',
-        'volume_down': '音量减小',
-        'volume_mute': '静音切换',
-        'play_pause': '播放/暂停',
-        'next_track': '下一曲',
-        'prev_track': '上一曲',
-        'lock_screen': '锁定屏幕',
-        'sleep': '睡眠',
-        'show_desktop': '显示桌面',
-    }
-    
+@router.get("/mappings")
+async def api_get_mappings():
+    """获取当前按键映射"""
     return {
-        "status": "success",
-        "available": True,
-        "message": "以下系统命令可直接作为快捷键使用",
-        "commands": command_descriptions
+        'button_mappings': button_mappings,
+        'sequence_mappings': sequence_mappings
+    }
+
+@router.get("/permission")
+async def api_check_permission():
+    """检查辅助功能权限"""
+    check_accessibility_permission()
+    return {
+        'has_permission': has_permission,
+        'message': permission_message
+    }
+
+@router.get("/platform")
+async def api_get_platform():
+    """获取平台信息"""
+    return {
+        "platform": "macOS",
+        "system": platform.system(),
+        "version": platform.mac_ver()[0] if is_mac else "N/A"
     }

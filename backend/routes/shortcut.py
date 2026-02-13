@@ -43,8 +43,8 @@ BASE_KEY_MAP = {
     'backspace': Key.backspace,
     'delete': Key.delete,
     'del': Key.delete,  # 别名
-    'insert': Key.insert,
-    'ins': Key.insert,  # 别名
+    # 'insert': Key.insert,  # Mac 上不支持 Insert 键
+    # 'ins': Key.insert,  # 别名
     
     # 导航键
     'home': Key.home,
@@ -61,23 +61,23 @@ BASE_KEY_MAP = {
     'return': Key.enter,  # 别名
     'tab': Key.tab,
     'space': Key.space,
-    'prtsc': Key.print_screen,  # 打印屏幕键
-    'printscreen': Key.print_screen,  # 别名
-    'print_scr': Key.print_screen,  # 别名
-    'ps': Key.print_screen,  # 别名
-    'print': Key.print_screen,  # 别名
-    'scroll_lock': Key.scroll_lock,
-    'scroll': Key.scroll_lock,  # 别名
-    'pause': Key.pause,
-    'break': Key.pause,  # 别名
-    'menu': Key.menu,
-    'apps': Key.menu,  # 别名
+    # 'prtsc': Key.print_screen,  # Mac 上不支持 Print Screen 键
+    # 'printscreen': Key.print_screen,  # 别名
+    # 'print_scr': Key.print_screen,  # 别名
+    # 'ps': Key.print_screen,  # 别名
+    # 'print': Key.print_screen,  # 别名
+    # 'scroll_lock': Key.scroll_lock,  # Mac 上不支持 Scroll Lock 键
+    # 'scroll': Key.scroll_lock,  # 别名
+    # 'pause': Key.pause,  # Mac 上不支持 Pause 键
+    # 'break': Key.pause,  # 别名
+    # 'menu': Key.menu,  # Mac 上不支持 Menu 键
+    # 'apps': Key.menu,  # 别名
     
     # 锁定键
     'caps_lock': Key.caps_lock,
     'caps': Key.caps_lock,  # 别名
-    'num_lock': Key.num_lock,
-    'num': Key.num_lock,  # 别名
+    # 'num_lock': Key.num_lock,  # Mac 上不支持 Num Lock 键
+    # 'num': Key.num_lock,  # 别名
     
     # 媒体键
     'volume_up': Key.media_volume_up,
@@ -91,7 +91,7 @@ BASE_KEY_MAP = {
     'previous': Key.media_previous,
     'prev': Key.media_previous,  # 别名
     'prev_track': Key.media_previous,  # 别名
-    'stop': Key.media_stop,
+    # 'stop': Key.media_stop,  # Mac 上不支持 Stop 键
     
     # 功能键（f1-f20）已经在解析函数中处理
 }

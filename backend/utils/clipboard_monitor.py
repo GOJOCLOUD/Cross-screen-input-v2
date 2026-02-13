@@ -27,15 +27,15 @@ class ClipboardMonitor:
         self._last_screenshot_time: float = 0  # 上次检测到的最新截图时间
         self._poll_interval: float = 0.2  # 轮询间隔（秒），更快检测
         self._lock: threading.Lock = threading.Lock()
-        self._platform: str = 'windows'  # Windows专用
-        self._screenshot_dir: str = str(Path.home() / "Desktop")  # Windows 默认截图位置
+        self._platform: str = 'mac'  # Mac专用
+        self._screenshot_dir: str = str(Path.home() / "Desktop")  # Mac 默认截图位置
     
     def _get_clipboard_content(self) -> Optional[bytes]:
         """获取剪贴板内容（支持文本和图片）"""
         try:
-            # Windows: 使用 PowerShell
+            # Mac: 使用 pbpaste
             result = subprocess.run(
-                ['powershell', '-command', 'Get-Clipboard -Format Text'],
+                ['pbpaste'],
                 capture_output=True,
                 timeout=1
             )
@@ -55,7 +55,7 @@ class ClipboardMonitor:
     def _get_latest_screenshot_time(self) -> float:
         """获取最新截图文件的修改时间"""
         try:
-            # Windows 截图文件名格式: "Screenshot*.png"
+            # Mac 截图文件名格式: "Screenshot*.png" 或 "屏幕截图*.png"
             patterns = [
                 os.path.join(self._screenshot_dir, "Screenshot*.png"),
                 os.path.join(self._screenshot_dir, "屏幕截图*.png"),

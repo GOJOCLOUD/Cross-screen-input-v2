@@ -37,8 +37,22 @@ def get_private_ip() -> Optional[str]:
         system = platform.system()
         private_ips = []
         
-        if system == 'Windows':
-            # Windows使用ipconfig命令
+        if system == 'Darwin':
+            # macOS使用ifconfig命令
+            result = subprocess.run(['ifconfig'], capture_output=True, text=True)
+            # 查找私有网络IP地址
+            private_ips = re.findall(r'inet\s+(10\.\d+\.\d+\.\d+)', result.stdout)
+            private_ips.extend(re.findall(r'inet\s+(172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)', result.stdout))
+            private_ips.extend(re.findall(r'inet\s+(192\.168\.\d+\.\d+)', result.stdout))
+        elif system == 'Linux':
+            # Linux使用ifconfig命令
+            result = subprocess.run(['ifconfig'], capture_output=True, text=True)
+            # 查找私有网络IP地址
+            private_ips = re.findall(r'inet\s+(10\.\d+\.\d+\.\d+)', result.stdout)
+            private_ips.extend(re.findall(r'inet\s+(172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)', result.stdout))
+            private_ips.extend(re.findall(r'inet\s+(192\.168\.\d+\.\d+)', result.stdout))
+        else:
+            # Windows使用ipconfig命令（保留兼容性）
             result = subprocess.run(['ipconfig'], capture_output=True, text=True)
             # 查找私有网络IP地址
             private_ips = re.findall(r'IPv4 Address[^\d]*(10\.\d+\.\d+\.\d+)', result.stdout)
@@ -49,13 +63,6 @@ def get_private_ip() -> Optional[str]:
                 private_ips = re.findall(r'(10\.\d+\.\d+\.\d+)', result.stdout)
                 private_ips.extend(re.findall(r'(172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)', result.stdout))
                 private_ips.extend(re.findall(r'(192\.168\.\d+\.\d+)', result.stdout))
-        else:
-            # macOS/Linux使用ifconfig命令
-            result = subprocess.run(['ifconfig'], capture_output=True, text=True)
-            # 查找私有网络IP地址
-            private_ips = re.findall(r'inet\s+(10\.\d+\.\d+\.\d+)', result.stdout)
-            private_ips.extend(re.findall(r'inet\s+(172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)', result.stdout))
-            private_ips.extend(re.findall(r'inet\s+(192\.168\.\d+\.\d+)', result.stdout))
         
         if private_ips:
             return private_ips[0]  # 返回第一个找到的私有网络IP
@@ -71,8 +78,8 @@ def get_hotspot_ip() -> Optional[str]:
 
 
 def get_server_port() -> int:
-    """获取服务器当前端口（固定端口19653）"""
-    return 19653
+    """获取服务器当前端口（固定端口2345）"""
+    return 2345
 
 
 @router.get("/access-info")
@@ -113,10 +120,10 @@ async def get_access_info() -> Dict[str, Any]:
         app_logger.error(f"获取访问信息失败: {e}", "desktop_api")
         return {
             "hotspot_ip": None,
-            "port": 19653,
-            "phone_url": "http://localhost:19653/phone",
-            "qrcode_url": "http://localhost:19653/phone",
-            "localhost_url": "http://localhost:19653",
+            "port": 2345,
+            "phone_url": "http://localhost:2345/phone",
+            "qrcode_url": "http://localhost:2345/phone",
+            "localhost_url": "http://localhost:2345",
             "error": str(e)
         }
 

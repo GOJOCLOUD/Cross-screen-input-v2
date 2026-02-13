@@ -1,0 +1,83 @@
+name: Build macOS PKG
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+      
+      - name: Build app with PyInstaller
+        run: |
+          cd backend
+          pyinstaller 跨屏输入.spec --clean --noconfirm
+      
+      - name: Create PKG
+        run: |
+          APP_PATH="backend/dist/跨屏输入.app"
+          PKG_NAME="跨屏输入-${{ github.ref_name }}-${{ github.sha }}.pkg"
+          
+          if [ ! -d "$APP_PATH" ]; then
+            echo "错误: 应用未找到于 $APP_PATH"
+            exit 1
+          fi
+          
+          echo "创建PKG安装包..."
+          
+          pkgbuild \
+            --install-location /Applications \
+            --component "$APP_PATH" \
+            --scripts pkg/scripts \
+            --identifier com.gojocloud.crossscreeninput \
+            --version 1.0.0 \
+            --root build-root \
+            build/PKG.pkg
+          
+          productbuild \
+            --distribution pkg/distribution.xml \
+            --package-path build \
+            --resources pkg/resources \
+            "$PKG_NAME"
+          
+          echo "PKG创建成功: $PKG_NAME"
+      
+      - name: Upload PKG artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: macOS-PKG
+          path: "*.pkg"
+          retention-days: 30
+      
+      - name: Create Release
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.pkg"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

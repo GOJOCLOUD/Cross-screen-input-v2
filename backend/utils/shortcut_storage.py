@@ -46,6 +46,26 @@ def load_buttons_data() -> Dict:
         
         with open(JSON_FILE, 'r', encoding='utf-8') as f:
             data = json.load(f)
+        
+        # 兼容旧格式：如果直接是列表，转换为字典格式
+        if isinstance(data, list):
+            data = {
+                "buttons": data,
+                "version": "1.0",
+                "last_updated": None
+            }
+        
+        # 确保数据结构正确
+        if not isinstance(data, dict):
+            return {
+                "buttons": [],
+                "version": "1.0",
+                "last_updated": None
+            }
+        
+        if "buttons" not in data:
+            data["buttons"] = []
+        
         return data
     except Exception as e:
         print(f"加载按钮配置失败: {e}")

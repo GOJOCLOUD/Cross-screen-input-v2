@@ -11,6 +11,7 @@ import socket
 import subprocess
 import re
 import json
+from contextlib import asynccontextmanager
 
 # 第三方库
 from fastapi import FastAPI, Request
@@ -20,13 +21,40 @@ from fastapi.responses import HTMLResponse, Response, JSONResponse
 from pydantic import BaseModel
 
 # 固定端口
-FIXED_PORT = 19653
+FIXED_PORT = 2345
+
+# Lifespan 上下文管理器
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """应用生命周期管理"""
+    # 启动事件
+    print("\n[INFO] 正在启动鼠标按键监听器...")
+    try:
+        from routes.mouse_listener import start_listener
+        result = start_listener()
+        if result.get('success'):
+            print("[SUCCESS] 鼠标按键监听器已启动")
+        else:
+            print(f"[WARNING] 鼠标监听器启动失败: {result.get('message', '未知错误')}")
+    except Exception as e:
+        print(f"[WARNING] 鼠标监听器启动失败: {e}")
+    
+    yield
+    
+    # 关闭事件
+    try:
+        from routes.mouse_listener import stop_listener
+        stop_listener()
+        print("[INFO] 鼠标监听器已停止")
+    except Exception as e:
+        print(f"[WARNING] 停止监听器失败: {e}")
 
 # 创建FastAPI应用实例
 app = FastAPI(
     title="跨屏输入API",
     description="统一管理剪贴板操作和页面跳转的后端API",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # 配置CORS
@@ -61,32 +89,6 @@ app.include_router(mouse.router, prefix="/api/mouse", tags=["mouse"])
 app.include_router(mouse_config.router, prefix="/api/mouse-config", tags=["mouse-config"])
 app.include_router(mouse_listener.router, prefix="/api/mouse-listener", tags=["mouse-listener"])
 app.include_router(desktop_api.router, prefix="/api/desktop", tags=["desktop"])
-
-# 应用启动时自动启动鼠标监听器
-@app.on_event("startup")
-async def startup_event():
-    """应用启动时的初始化"""
-    print("\n[INFO] 正在启动鼠标按键监听器...")
-    try:
-        from routes.mouse_listener import start_listener
-        result = start_listener()
-        if result.get('success'):
-            print("[SUCCESS] 鼠标按键监听器已启动")
-        else:
-            print(f"[WARNING] 鼠标监听器启动失败: {result.get('message', '未知错误')}")
-    except Exception as e:
-        print(f"[WARNING] 鼠标监听器启动失败: {e}")
-
-# 应用关闭时停止监听器
-@app.on_event("shutdown")
-async def shutdown_event():
-    """应用关闭时的清理"""
-    try:
-        from routes.mouse_listener import stop_listener
-        stop_listener()
-        print("[INFO] 鼠标监听器已停止")
-    except Exception as e:
-        print(f"[WARNING] 停止监听器失败: {e}")
 
 # 根路径返回desktop.html（仅限本机访问）
 @app.get("/", response_class=HTMLResponse)
@@ -144,7 +146,9 @@ async def send_post(request: Request) -> dict:
         copy_data = SendRequest(**body)
         
         # 调用剪贴板功能
-        return await copy_to_clipboard(request, copy_data)
+        result = await copy_to_clipboard(request, copy_data)
+        # 转换为字典
+        return result.dict() if hasattr(result, 'dict') else result
     except Exception as e:
         return {
             "status": "error",
@@ -225,7 +229,7 @@ if __name__ == "__main__":
     # 检测是否在打包环境中运行
     is_frozen = getattr(sys, 'frozen', False)
     
-    # 使用固定端口 19653，启动前自动清理占用该端口的进程
+    # 使用固定端口 2345，启动前自动清理占用该端口的进程
     port = FIXED_PORT
     
     # 清理占用端口的进程
@@ -252,25 +256,19 @@ if __name__ == "__main__":
     
     # 获取所有网络接口的私有IP地址
     try:
-        # Windows使用ipconfig命令
-        result = subprocess.run(['ipconfig'], capture_output=True, text=True)
+        # Mac使用ifconfig命令
+        result = subprocess.run(['ifconfig'], capture_output=True, text=True)
         # 查找所有私有网络IP地址
-        private_ips = re.findall(r'IPv4 Address[^\d]*(10\.\d+\.\d+\.\d+)', result.stdout)
-        private_ips.extend(re.findall(r'IPv4 Address[^\d]*(172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)', result.stdout))
-        private_ips.extend(re.findall(r'IPv4 Address[^\d]*(192\.168\.\d+\.\d+)', result.stdout))
-        
-        # 如果没有找到，尝试其他格式
-        if not private_ips:
-            private_ips = re.findall(r'(10\.\d+\.\d+\.\d+)', result.stdout)
-            private_ips.extend(re.findall(r'(172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)', result.stdout))
-            private_ips.extend(re.findall(r'(192\.168\.\d+\.\d+)', result.stdout))
+        private_ips = re.findall(r'inet (10\.\d+\.\d+\.\d+)', result.stdout)
+        private_ips.extend(re.findall(r'inet (172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)', result.stdout))
+        private_ips.extend(re.findall(r'inet (192\.168\.\d+\.\d+)', result.stdout))
         
         # 去重并显示找到的私有IP地址
         unique_private_ips = list(set(private_ips))
         for ip in unique_private_ips:
             print(f"  - http://{ip}:{port}")
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"[WARNING] 获取私有IP地址失败: {e}")
     
     print("")
     print("重要说明:")

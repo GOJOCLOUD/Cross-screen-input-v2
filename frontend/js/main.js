@@ -187,6 +187,31 @@ document.addEventListener('DOMContentLoaded', async function() {
         DOM.overlay.addEventListener('click', closeSidebar);
     }
 
+    // --- 键盘平滑动画处理 ---
+    const handleVisualViewportResize = () => {
+        const viewport = window.visualViewport;
+        if (!viewport) return;
+
+        const inputArea = document.querySelector('.input-area');
+        if (!inputArea) return;
+
+        // keyboardHeight 是键盘遮挡视窗的高度
+        const keyboardHeight = window.innerHeight - viewport.height;
+
+        // 直接设置 bottom 属性。CSS transition 会负责动画。
+        // 使用一个阈值（> 100px）来避免在桌面浏览器上缩放窗口时触发。
+        if (keyboardHeight > 100) {
+            inputArea.style.bottom = `${keyboardHeight}px`;
+        } else {
+            inputArea.style.bottom = '0px';
+        }
+    };
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', handleVisualViewportResize);
+    }
+    // --- 键盘平滑动画处理结束 ---
+
     // 跳转到键盘快捷键设置页面
     window.goToShortcutSettings = function() {
         closeSidebar();

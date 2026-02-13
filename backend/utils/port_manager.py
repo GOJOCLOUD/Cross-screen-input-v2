@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 端口管理模块
-提供端口进程清理功能（Windows专用）
+提供端口进程清理功能（Mac专用）
 
 功能：
 杀掉占用指定端口的进程
@@ -15,7 +15,7 @@ from utils.logger import app_logger
 
 def kill_process_on_port(port: int) -> bool:
     """
-    杀掉占用指定端口的进程（Windows专用）
+    杀掉占用指定端口的进程（Mac专用）
     
     Args:
         port: 要清理的端口号
@@ -24,34 +24,27 @@ def kill_process_on_port(port: int) -> bool:
         bool: 成功返回True，失败返回False
     """
     try:
-        # Windows: 使用 netstat 和 taskkill
+        # Mac: 使用 lsof 和 kill
         # 查找占用端口的进程
         result = subprocess.run(
-            ['netstat', '-ano'],
+            ['lsof', '-ti', f':{port}'],
             capture_output=True,
             text=True,
             timeout=5
         )
         
         if result.returncode != 0:
-            app_logger.warning(f"无法执行 netstat 命令", "port_manager")
-            return False
+            app_logger.info(f"端口 {port} 未被占用", "port_manager")
+            return True
         
-        # 查找占用端口的PID
-        lines = result.stdout.split('\n')
-        pid = None
-        for line in lines:
-            if f':{port}' in line and 'LISTENING' in line:
-                parts = line.split()
-                if len(parts) >= 5:
-                    pid = parts[-1]
-                    break
+        # lsof -ti 返回占用端口的PID
+        pid = result.stdout.strip()
         
         if pid:
             app_logger.info(f"找到占用端口 {port} 的进程 PID: {pid}", "port_manager")
             # 杀掉进程
             kill_result = subprocess.run(
-                ['taskkill', '/F', '/PID', pid],
+                ['kill', '-9', pid],
                 capture_output=True,
                 text=True,
                 timeout=5
@@ -72,4 +65,3 @@ def kill_process_on_port(port: int) -> bool:
     except Exception as e:
         app_logger.error(f"清理端口 {port} 失败: {e}", "port_manager")
         return False
-

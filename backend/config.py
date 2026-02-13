@@ -3,7 +3,7 @@
 """
 配置文件
 管理项目路径和其他配置
-Windows专用版本，支持 Electron 打包后的路径检测
+Mac专用版本
 """
 
 import os
@@ -12,12 +12,9 @@ import shutil
 
 
 def is_packaged():
-    """检测是否在打包环境中运行（PyInstaller 或 Electron）"""
+    """检测是否在打包环境中运行（PyInstaller）"""
     # PyInstaller 打包后会设置 frozen 属性
     if getattr(sys, 'frozen', False):
-        return True
-    # 检查环境变量（由 Electron 主进程设置）
-    if os.environ.get('ELECTRON_RUN_AS_NODE') or os.environ.get('KPSR_PACKAGED'):
         return True
     return False
 
@@ -35,22 +32,16 @@ def get_executable_dir():
     """获取可执行文件所在目录（用于找到 frontend 等资源）"""
     if getattr(sys, 'frozen', False):
         # PyInstaller 打包后，可执行文件所在目录
-        # 目录模式：kpsr-backend 在 Resources/kpsr-backend/ 下
-        # frontend 在 Resources/frontend/ 下
-        # 所以需要返回父目录 (Resources/)
         exe_dir = os.path.dirname(sys.executable)
-        # 如果是在 kpsr-backend 子目录中，返回父目录
-        if os.path.basename(exe_dir) == 'kpsr-backend':
-            return os.path.dirname(exe_dir)
         return exe_dir
     else:
         return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def get_user_data_dir():
-    """获取用户数据目录（Windows专用）"""
-    # Windows: %APPDATA%/KPSR
-    return os.path.join(os.environ.get('APPDATA', os.path.expanduser('~')), 'KPSR')
+    """获取用户数据目录（Mac专用）"""
+    # Mac: ~/Library/Application Support/KPSR
+    return os.path.join(os.path.expanduser('~'), 'Library', 'Application Support', 'KPSR')
 
 
 # 判断运行环境

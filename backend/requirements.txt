@@ -13,9 +13,6 @@ pynput>=1.7.6
 # 跨域支持
 fastapi-cors
 
-# Windows特定依赖
-pywin32>=227
-
 # 图像处理（截图功能）
 Pillow>=9.0.0
 
@@ -30,3 +27,7 @@ pydantic-settings
 
 # 类型提示扩展
 typing_extensions
+
+# macOS特定依赖
+pyobjc-core>=9.0
+pyobjc-framework-Quartz>=9.0
