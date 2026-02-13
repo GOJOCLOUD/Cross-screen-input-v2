@@ -48,13 +48,14 @@ jobs:
           
           echo "创建PKG安装包..."
           
+          mkdir -p build
+          
           pkgbuild \
             --install-location /Applications \
             --component "$APP_PATH" \
             --scripts pkg/scripts \
             --identifier com.gojocloud.crossscreeninput \
             --version 1.0.0 \
-            --root build-root \
             build/PKG.pkg
           
           productbuild \
