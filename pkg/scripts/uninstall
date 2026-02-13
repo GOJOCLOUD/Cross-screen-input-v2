@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -e
+
+echo "正在卸载跨屏输入..."
+
+# 1. 停止正在运行的实例
+echo "停止应用..."
+killall "跨屏输入" 2>/dev/null || true
+sleep 1
+
+# 2. 移除自动启动
+echo "移除自动启动..."
+PLIST_PATH="$HOME/Library/LaunchAgents/com.gojocloud.crossscreeninput.plist"
+if [ -f "$PLIST_PATH" ]; then
+    launchctl unload "$PLIST_PATH" 2>/dev/null || true
+    rm -f "$PLIST_PATH"
+fi
+
+# 3. 移除应用
+echo "移除应用..."
+rm -rf "/Applications/跨屏输入.app"
+
+# 4. 清理数据目录（可选，保留用户数据）
+echo ""
+echo "是否要删除用户数据？"
+echo "数据目录: $HOME/Library/Application Support/KPSR"
+read -p "删除数据目录？(y/N): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    rm -rf "$HOME/Library/Application Support/KPSR"
+    echo "用户数据已删除"
+else
+    echo "用户数据已保留"
+fi
+
+# 5. 清理备份
+BACKUP_DIR="$HOME/Library/Application Support/跨屏输入/backup"
+if [ -d "$BACKUP_DIR" ]; then
+    echo "是否要删除备份文件？"
+    read -p "删除备份文件？(y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        rm -rf "$BACKUP_DIR"
+        echo "备份文件已删除"
+    else
+        echo "备份文件已保留"
+    fi
+fi
+
+echo ""
+echo "卸载完成！"

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <title>跨屏输入</title>
+    <welcome file="welcome.html" mime-type="text/html"/>
+    <license file="license.txt" mime-type="text/plain"/>
+    <readme file="readme.txt" mime-type="text/plain"/>
+    <conclusion file="conclusion.html" mime-type="text/html"/>
+    <background file="background.png" alignment="bottomleft" scaling="proportional"/>
+    <options allow-external-scripts="yes" customize="always"/>
+    <choices-outline>
+        <line choice="app">
+            <line choice="helper">
+                <line choice="permissions"/>
+            </line>
+        </line>
+    </choices-outline>
+    <choice id="app" title="跨屏输入应用" description="安装跨屏输入应用程序" enabled="true" start_selected="true" start_enabled="true" start_visible="true">
+        <pkgref id="com.gojocloud.crossscreeninput.app"/>
+    </choice>
+    <choice id="helper" title="辅助功能权限" description="配置辅助功能权限以启用键盘和鼠标控制" enabled="true" start_selected="true" start_enabled="true" start_visible="true">
+        <pkgref id="com.gojocloud.crossscreeninput.helper"/>
+    </choice>
+    <choice id="permissions" title="系统权限" description="配置必要的系统权限" enabled="true" start_selected="true" start_enabled="true" start_visible="true">
+        <pkgref id="com.gojocloud.crossscreeninput.permissions"/>
+    </choice>
+</installer-gui-script>

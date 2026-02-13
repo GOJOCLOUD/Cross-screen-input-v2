@@ -79,6 +79,7 @@ electron/build/
 # 但保留 .gitkeep
 
 # PKG打包文件
-pkg/
+pkg/build-root/
+pkg/*.pkg
 build-root/
 *.pkg

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+echo "准备安装跨屏输入..."
+
+# 检查是否有正在运行的实例
+if pgrep -f "跨屏输入" > /dev/null; then
+    echo "检测到正在运行的实例，尝试关闭..."
+    killall "跨屏输入" 2>/dev/null || true
+    sleep 2
+fi
+
+# 检查旧版本
+OLD_APP="/Applications/跨屏输入.app"
+if [ -d "$OLD_APP" ]; then
+    echo "发现旧版本，正在备份..."
+    BACKUP_DIR="$HOME/Library/Application Support/跨屏输入/backup"
+    mkdir -p "$BACKUP_DIR"
+    cp -R "$OLD_APP" "$BACKUP_DIR/$(date +%Y%m%d_%H%M%S).app"
+    echo "旧版本已备份到: $BACKUP_DIR"
+fi
+
+exit 0

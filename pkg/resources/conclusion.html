@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安装完成</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        .steps {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .step {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        .step-number {
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 10px;
+        }
+        .note {
+            margin-top: 30px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 5px;
+            color: #856404;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <h1>安装完成！</h1>
+        
+        <p>跨屏输入已成功安装到您的Mac</p>
+        
+        <div class="steps">
+            <h3>📋 接下来的步骤：</h3>
+            
+            <div class="step">
+                <span class="step-number">1.</span>
+                打开「系统设置」>「隐私与安全性」
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2.</span>
+                点击「辅助功能」，找到「跨屏输入」并打开开关
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3.</span>
+                点击「完全磁盘访问权限」，找到「跨屏输入」并打开开关
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4.</span>
+                从「应用程序」文件夹启动「跨屏输入」
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5.</span>
+                在手机浏览器中访问显示的地址，开始使用
+            </div>
+        </div>
+        
+        <div class="note">
+            <strong>💡 提示：</strong>首次启动时，系统会提示您授予必要的权限，请点击「打开」以继续。
+        </div>
+        
+        <a href="x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility" class="btn">打开系统设置</a>
+    </div>
+</body>
+</html>

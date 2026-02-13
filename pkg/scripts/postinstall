@@ -1,0 +1,71 @@
+#!/bin/bash
+
+set -e
+
+echo "配置跨屏输入系统权限..."
+
+# 获取当前用户
+CURRENT_USER=$(stat -f "%Su" /dev/console)
+echo "当前用户: $CURRENT_USER"
+
+# 1. 配置辅助功能权限（键盘和鼠标控制）
+echo "配置辅助功能权限..."
+TCC_DB="/Library/Application Support/com.apple.TCC/TCB.db"
+if [ -f "$TCC_DB" ]; then
+    sqlite3 "$TCC_DB" "INSERT OR REPLACE INTO access (service,client,client_type,auth_value,auth_reason,auth_version,flags,last_modified) VALUES ('kTCCServiceAccessibility','com.gojocloud.crossscreeninput',0,2,1,0,$(date +%s));" 2>/dev/null || true
+fi
+
+# 2. 配置完全磁盘访问权限（剪贴板操作）
+echo "配置完全磁盘访问权限..."
+sqlite3 "$TCC_DB" "INSERT OR REPLACE INTO access (service,client,client_type,auth_value,auth_reason,auth_version,flags,last_modified) VALUES ('kTCCServiceSystemPolicyAllFiles','com.gojocloud.crossscreeninput',0,2,1,0,$(date +%s));" 2>/dev/null || true
+
+# 3. 配置自动启动
+echo "配置自动启动..."
+PLIST_PATH="$HOME/Library/LaunchAgents/com.gojocloud.crossscreeninput.plist"
+cat > "$PLIST_PATH" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.gojocloud.crossscreeninput</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Applications/跨屏输入.app/Contents/MacOS/跨屏输入</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <false/>
+</dict>
+</plist>
+EOF
+
+# 设置正确的权限
+chmod 644 "$PLIST_PATH"
+chown "$CURRENT_USER:staff" "$PLIST_PATH"
+
+# 4. 提示用户手动授权
+echo ""
+echo "========================================"
+echo "权限配置完成"
+echo "========================================"
+echo ""
+echo "请按以下步骤完成手动授权："
+echo ""
+echo "1. 打开「系统设置」>「隐私与安全性」"
+echo ""
+echo "2. 点击「辅助功能」"
+echo "   - 找到「跨屏输入」并打开开关"
+echo ""
+echo "3. 点击「完全磁盘访问权限」"
+echo "   - 找到「跨屏输入」并打开开关"
+echo ""
+echo "4. 重启应用以使权限生效"
+echo ""
+echo "========================================"
+
+# 5. 尝试打开系统设置
+open "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"
+
+exit 0
