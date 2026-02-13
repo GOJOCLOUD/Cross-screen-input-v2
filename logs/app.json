@@ -15261,5 +15261,1867 @@
     "source": "desktop_api",
     "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
     "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:58:48.185147",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:58:48.210440",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:58:53.169186",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:58:53.184824",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:58:58.182546",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:58:58.206122",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:03.179127",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:03.202951",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:08.173174",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:08.193303",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:13.184812",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:13.210450",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:18.179131",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:18.201944",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:23.171342",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:23.187707",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:28.181879",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:28.205121",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:33.177685",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:33.200718",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:38.178761",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:38.201713",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:43.184344",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:43.209223",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:48.170630",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:48.188376",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:53.183296",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:53.206125",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:58.178713",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T14:59:58.201428",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:03.169182",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:03.196726",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:05.276044",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:05.348860",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:08.170589",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:08.189087",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:13.176959",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:13.199138",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:18.168401",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:18.185998",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:23.172212",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:23.195344",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:28.169216",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:28.186530",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:33.168046",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:33.184027",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:38.175936",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:38.197173",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:43.167880",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:43.184109",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:48.168972",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:48.185853",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:53.171545",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:53.187047",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:58.176767",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:00:58.201019",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:03.172418",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:03.194086",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:08.178922",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:08.202056",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:13.173958",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:13.214992",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:18.018426",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:18.098797",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:18.171108",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:18.191673",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:23.181138",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:23.203269",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:28.169287",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:28.186517",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:33.178034",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:33.201813",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:38.177866",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:38.201443",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:43.176223",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:43.204837",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:48.180144",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:48.202389",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:53.172036",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:53.193347",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:58.176808",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:01:58.200299",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:03.178598",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:03.202300",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:08.167877",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:08.194031",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:13.182817",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:13.208842",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:18.176410",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:18.199444",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:23.181865",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:23.208192",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:28.174870",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:28.199814",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:29.547031",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:29.612888",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:33.170735",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:33.191313",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:38.175676",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:38.199080",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:43.173179",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:43.195630",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:48.167276",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:48.184713",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:53.181046",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:53.206647",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:58.178373",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:02:58.201905",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:03.174279",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:03.198141",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:08.181132",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:08.207002",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:13.173475",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:13.195401",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:18.181000",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:18.206386",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:23.175889",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:23.199025",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:28.168940",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:28.184817",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:33.180862",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:33.206874",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:35.052274",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:35.111496",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:38.176387",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:38.200640",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:43.174719",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:43.197753",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:47.384024",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:47.458926",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:48.179605",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:48.205496",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:53.172861",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:53.194526",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:58.180710",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:03:58.206539",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:03.176094",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:03.199528",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:08.167550",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:08.186828",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:09.689376",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:09.740275",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:13.170075",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:13.194144",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:16.641047",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:16.722198",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:18.178223",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:18.201410",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:23.175791",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:23.199585",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:28.177169",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:28.200901",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:33.167340",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:33.197313",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:38.180683",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:38.207025",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:43.175663",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:43.199374",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:48.180955",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:48.205830",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:52.474421",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:52.549318",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:53.177355",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:53.202088",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:58.175669",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:04:58.199367",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:03.181937",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:03.209759",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:08.178535",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:08.202487",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:13.165831",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:13.182757",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:18.181273",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:18.207202",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:23.172695",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:23.196837",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:28.176931",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:28.207075",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:33.178686",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:33.203457",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:38.165462",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:38.181530",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:40.305784",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:40.377263",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:43.168311",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:43.188789",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:48.179629",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:48.204444",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:53.182094",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:53.209252",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:58.182587",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:05:58.209023",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:03.169466",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:03.208489",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:08.182193",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:08.210427",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:13.176485",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:13.199769",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:18.170663",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:18.194957",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:23.178797",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:23.205919",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:28.165857",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:28.185609",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:29.454568",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:29.525912",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:33.173765",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:33.204324",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:38.174027",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:38.198012",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:43.166373",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:43.187488",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:48.174481",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:48.203147",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:53.171783",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:53.197603",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:58.180483",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:06:58.207560",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:03.172289",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:03.197415",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:08.164334",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:08.180694",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:13.169545",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:13.194547",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:16.006937",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:16.073316",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:18.181829",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:18.209544",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:23.166418",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:23.186509",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:28.179076",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:28.225546",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:29.893807",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:07:29.916596",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:08:01.033779",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:08:01.147122",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:16:15.482263",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:16:15.540687",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:17:27.846599",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:17:27.915286",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:18:40.808392",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:18:40.883645",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:19:25.776001",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:19:25.837106",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:21:23.677660",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:21:23.752750",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:23:40.686306",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:23:40.757519",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:24:20.610956",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:24:20.745289",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:25:43.411718",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:25:43.450566",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:13.775702",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:14.078166",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "执行单键操作: side2 -> launchpad",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:19.885937",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:19.928289",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:24.882938",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:24.903423",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:29.879537",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:29.897976",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:30.551305",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:30.573987",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:49.000997",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "按键 side2 可能是序列前缀，延迟 0.3s 执行单键操作",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:49.081979",
+    "level": "INFO",
+    "source": "mouse_listener",
+    "message": "序列匹配: ['side2', 'side1'] -> cmd+v",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:50.864193",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T15:26:50.887507",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
   }
 ]
