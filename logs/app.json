@@ -17235,5 +17235,19 @@
     "source": "desktop_api",
     "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
     "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T16:06:15.716237",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回状态信息: server_running=True, mouse_listener=True",
+    "extra": {}
+  },
+  {
+    "timestamp": "2026-02-13T16:06:15.733400",
+    "level": "INFO",
+    "source": "desktop_api",
+    "message": "返回访问信息: hotspot_ip=10.208.2.197, port=2345",
+    "extra": {}
   }
 ]
