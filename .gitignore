@@ -17,6 +17,7 @@ ENV/
 *.manifest
 *.spec
 !backend/kpsr-backend.spec
+!backend/跨屏输入.spec
 
 # Electron
 node_modules/
